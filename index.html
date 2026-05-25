@@ -3,34 +3,39 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portefólio — M4RQX</title>
-<meta name="description" content="Apps web, plataformas de gestão e sites institucionais por M4RQX." />
-<meta property="og:title" content="Portefólio — M4RQX" />
-<meta property="og:description" content="Apps web, plataformas de gestão e sites institucionais." />
-<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="%230c0b0a"/><text x="50%" y="62%" text-anchor="middle" fill="%23e8956b" font-family="Georgia,serif" font-size="22" font-style="italic">P</text></svg>' />
+<title>M4RQX — Portefólio</title>
+<meta name="description" content="Apps, plataformas e sites por M4RQX. Repositórios abertos no GitHub." />
+<meta property="og:title" content="M4RQX — Portefólio" />
+<meta property="og:description" content="Apps, plataformas e sites. Cinco projetos, cinco links." />
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%23bef264"/><text x="50%" y="68%" text-anchor="middle" fill="%23080808" font-family="ui-sans-serif,system-ui" font-size="18" font-weight="800">M</text></svg>' />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --bg: #0c0b0a;
-    --bg-rise: #131210;
-    --bg-rise-2: #1a1815;
-    --line: rgba(244, 237, 226, 0.08);
-    --line-strong: rgba(244, 237, 226, 0.16);
-    --ink: #f4ede2;
-    --ink-soft: #c8c0b3;
-    --ink-mute: #8b847a;
-    --ink-dim: #5e574e;
-    --accent: #e8956b;
-    --accent-line: rgba(232, 149, 107, 0.35);
-    --warn: #e8c46b;
-    --warn-soft: rgba(232, 196, 107, 0.10);
-    --serif: 'Instrument Serif', Georgia, serif;
+    --bg: #080808;
+    --panel: #121212;
+    --panel-hi: #181818;
+    --panel-featured: #0e0e0e;
+    --line: rgba(255, 255, 255, 0.06);
+    --line-mid: rgba(255, 255, 255, 0.12);
+    --line-accent: rgba(190, 242, 100, 0.4);
+    --text: #f5f5f5;
+    --text-soft: #d4d4d4;
+    --text-mute: #999;
+    --text-dim: #565656;
+    --accent: #bef264;
+    --accent-strong: #d3f877;
+    --accent-soft: rgba(190, 242, 100, 0.10);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251, 191, 36, 0.10);
     --sans: 'Geist', system-ui, -apple-system, sans-serif;
+    --display: 'Bricolage Grotesque', 'Geist', system-ui, sans-serif;
     --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --radius: 14px;
+    --radius-lg: 22px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +43,7 @@
 
   body {
     background: var(--bg);
-    color: var(--ink);
+    color: var(--text);
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.5;
@@ -48,468 +53,310 @@
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
-    opacity: 0.045;
-    mix-blend-mode: overlay;
-    z-index: 1;
-  }
-
   a { color: inherit; text-decoration: none; }
   a:focus-visible {
-    outline: 1px solid var(--accent);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
-  .shell {
-    max-width: 1280px;
+  .container {
+    max-width: 1320px;
     margin: 0 auto;
     padding: 0 clamp(1.25rem, 4vw, 3rem);
-    position: relative;
-    z-index: 2;
   }
 
-  /* GitHub profile button (inline in masthead) */
+  /* ===== MASTHEAD ===== */
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+  .brand {
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: -0.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 3px;
+    display: inline-block;
+  }
   .gh-link {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    padding: 0.4rem 0.7rem 0.4rem 0.45rem;
-    background: rgba(19, 18, 16, 0.7);
-    border: 1px solid var(--line-strong);
-    color: var(--ink);
+    padding: 0.35rem 0.75rem 0.35rem 0.4rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 999px;
     font-family: var(--mono);
     font-size: 0.72rem;
-    letter-spacing: 0.04em;
+    color: var(--text-soft);
     transition: border-color 200ms ease, background 200ms ease, transform 150ms ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
-  .gh-link:hover {
-    border-color: var(--accent-line);
-    background: rgba(26, 24, 21, 0.85);
-  }
+  .gh-link:hover { border-color: var(--line-accent); background: var(--panel-hi); }
+  .gh-link:active { transform: translateY(1px); }
   .gh-link .avatar {
     width: 22px;
     height: 22px;
-    border-radius: 4px;
-    object-fit: cover;
-    background: var(--bg-rise-2);
-  }
-  .gh-link .handle { font-weight: 500; }
-  .gh-link .dot { color: var(--ink-dim); }
-  .gh-link .count {
-    color: var(--ink-mute);
-    font-variant-numeric: tabular-nums;
-  }
-  .gh-link.loading .handle,
-  .gh-link.loading .count { opacity: 0.5; }
-
-  /* MASTHEAD */
-  .masthead {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.75rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .wordmark {
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
-  .wordmark em {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--ink-mute);
-    font-size: 1.05rem;
-    margin-left: 0.4rem;
-    font-weight: 400;
-  }
-
-  /* INTRO */
-  .intro {
-    padding: clamp(4.5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem);
-    max-width: 56rem;
-  }
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 1.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .eyebrow::before {
-    content: '';
-    width: 1.75rem;
-    height: 1px;
-    background: var(--accent);
-  }
-  .intro h1 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(3rem, 9.5vw, 7rem);
-    line-height: 0.94;
-    letter-spacing: -0.025em;
-    margin-bottom: 1.75rem;
-    text-wrap: balance;
-  }
-  .intro h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-  .intro p {
-    font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
-    color: var(--ink-soft);
-    max-width: 40rem;
-    line-height: 1.55;
-    text-wrap: pretty;
-  }
-
-  /* FLAGSHIP */
-  .flagship {
-    padding: clamp(3rem, 6vw, 6rem) 0;
-    border-top: 1px solid var(--line);
-  }
-  .flagship-wrap {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: clamp(2rem, 5vw, 4.5rem);
-  }
-  @media (min-width: 900px) {
-    .flagship-wrap { grid-template-columns: 1.1fr 1fr; align-items: end; }
-  }
-  .flagship .label {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    margin-bottom: 1.75rem;
-    display: flex;
-    gap: 0.55rem;
-    align-items: center;
-  }
-  .flagship .label::before {
-    content: '✦';
-    color: var(--accent);
-    font-size: 0.95rem;
-  }
-  .flagship h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(3rem, 8.5vw, 6rem);
-    line-height: 0.92;
-    letter-spacing: -0.025em;
-    margin-bottom: 1.5rem;
-    text-wrap: balance;
-  }
-  .flagship h2 em { font-style: italic; color: var(--accent); }
-  .flagship-desc {
-    font-size: 1.0625rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.5rem;
-    max-width: 32rem;
-    line-height: 1.6;
-    text-wrap: pretty;
-  }
-  .flagship-meta {
-    margin-bottom: 1.75rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.04em;
-    min-height: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    align-items: center;
-  }
-  .flagship-meta .lang-dot {
-    width: 7px;
-    height: 7px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--panel-hi);
+  }
+  .gh-link .gh-sep { color: var(--text-dim); }
+  .gh-link .gh-count { color: var(--text-mute); font-variant-numeric: tabular-nums; }
+  .gh-link.loading .gh-count { opacity: 0.4; }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: clamp(3rem, 8vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 8vw, 6rem);
+    font-variation-settings: 'opsz' 96, 'wdth' 100;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+  .hero h1 .acc { color: var(--accent); }
+  .hero h1 .arrow {
     display: inline-block;
-    margin-right: 0.3rem;
-    vertical-align: middle;
-  }
-  .flagship-meta .sep { color: var(--ink-dim); }
-  .flagship-meta.loading { opacity: 0.4; }
-
-  .flagship-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 2.25rem;
-  }
-  .chip {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    padding: 0.32rem 0.65rem;
-    color: var(--ink-soft);
-    border: 1px solid var(--line-strong);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
-  .chip.accent { color: var(--accent); border-color: var(--accent-line); }
-  .flagship-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    padding: 0.95rem 1.4rem;
-    border: 1px solid var(--accent);
+    transform: translateY(-0.06em) rotate(-2deg);
     color: var(--accent);
-    background: transparent;
-    letter-spacing: 0.02em;
-    transition: background 200ms ease, color 200ms ease, transform 150ms ease;
   }
-  .flagship-cta:hover { background: var(--accent); color: var(--bg); }
-  .flagship-cta:active { transform: translateY(1px); }
-  .flagship-cta .arrow { transition: transform 200ms ease; }
-  .flagship-cta:hover .arrow { transform: translateX(4px); }
 
-  .flagship-art {
+  /* ===== BENTO ===== */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .tile {
     position: relative;
-    aspect-ratio: 4/5;
-    min-height: 360px;
-    background:
-      radial-gradient(120% 80% at 20% 15%, rgba(232, 149, 107, 0.12), transparent 55%),
-      radial-gradient(80% 60% at 90% 100%, rgba(232, 149, 107, 0.06), transparent 60%),
-      var(--bg-rise);
-    border: 1px solid var(--line);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    color: inherit;
+    min-height: 230px;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
   }
-  .flagship-art::after {
+  .tile::after {
     content: '';
     position: absolute;
     inset: 0;
+    background: radial-gradient(80% 60% at 90% 0%, rgba(190, 242, 100, 0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity 280ms ease;
+    z-index: -1;
     pointer-events: none;
-    background:
-      repeating-linear-gradient(0deg, rgba(244, 237, 226, 0.035) 0 1px, transparent 1px 96px);
   }
-  .flagship-art .top {
-    display: flex;
-    justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--ink-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+  .tile:hover {
+    background: var(--panel-hi);
+    border-color: var(--line-mid);
+    transform: translateY(-2px);
   }
-  .flagship-art .num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--ink-dim);
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.1em;
-  }
-  .flagship-art .name {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(3rem, 7.5vw, 5.5rem);
-    color: var(--accent);
-    line-height: 0.85;
-    letter-spacing: -0.035em;
-  }
+  .tile:hover::after { opacity: 1; }
+  .tile:active { transform: translateY(0); }
 
-  /* PROJECTS LIST */
-  .projects {
-    padding: clamp(4rem, 8vw, 7rem) 0 clamp(4.5rem, 8vw, 7rem);
-    border-top: 1px solid var(--line);
+  .tile--feature {
+    grid-column: 1 / -1;
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    min-height: clamp(320px, 38vw, 420px);
+    background: var(--panel-featured);
   }
-  .projects-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: clamp(2rem, 5vw, 3rem);
-    gap: 2rem;
-  }
-  .projects-head h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .projects-head h2 em { font-style: italic; color: var(--accent); }
-  .projects-head .count {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .project-list { display: flex; flex-direction: column; }
-  .project-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.9rem;
-    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
-    border-top: 1px solid var(--line);
-    color: inherit;
-    text-decoration: none;
-    position: relative;
-    transition: background 240ms ease;
-  }
-  @media (min-width: 760px) {
-    .project-row {
-      grid-template-columns: minmax(0, 0.55fr) minmax(0, 1fr) auto;
-      gap: 2.5rem;
-      align-items: baseline;
-    }
-  }
-  .project-row:last-of-type { border-bottom: 1px solid var(--line); }
-  .project-row::before {
+  .tile--feature::before {
     content: '';
     position: absolute;
-    left: -1rem;
-    top: 50%;
-    width: 0.5rem;
-    height: 1px;
-    background: var(--accent);
-    transform: translateY(-50%) scaleX(0);
-    transform-origin: right;
-    transition: transform 280ms ease;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(190, 242, 100, 0.10), transparent 65%);
+    pointer-events: none;
+    z-index: -1;
   }
-  .project-row:hover { background: linear-gradient(90deg, rgba(232, 149, 107, 0.045), transparent 70%); }
-  .project-row:hover::before { transform: translateY(-50%) scaleX(1); }
 
-  .project-row h3 {
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.625rem, 3.5vw, 2.5rem);
-    line-height: 1;
-    letter-spacing: -0.018em;
-    color: var(--ink);
-    transition: color 200ms ease;
-  }
-  .project-row:hover h3 { color: var(--accent); }
-  .project-row .desc {
-    font-size: 0.9375rem;
-    color: var(--ink-mute);
-    line-height: 1.6;
-    max-width: 38rem;
-    text-wrap: pretty;
-  }
-  .project-row .stack {
+  .tile__head {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.85rem;
-  }
-  .project-row .repo-meta {
-    margin-top: 0.85rem;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.04em;
-    min-height: 0.9rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
+    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
   }
-  .project-row .repo-meta .lang-dot {
-    width: 7px;
-    height: 7px;
+  .tile__tag {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .tile__tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .tile__meta {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--text-mute);
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 0.85rem;
+  }
+  .tile__meta .lang-dot {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--accent);
     display: inline-block;
-    margin-right: 0.3rem;
-    vertical-align: middle;
   }
-  .project-row .repo-meta .sep { color: var(--ink-dim); }
-  .project-row .repo-meta.loading { opacity: 0.4; }
-  .project-row .repo-meta.empty { display: none; }
+  .tile__meta .sep { color: var(--text-dim); }
+  .tile__meta.loading { opacity: 0.4; }
+  .tile__meta.empty { opacity: 0; }
 
-  .project-row .arrow-link {
+  .tile__body { flex: 1; min-width: 0; }
+  .tile__name {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-variation-settings: 'opsz' 24, 'wdth' 100;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 0.55rem;
+    transition: color 200ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .tile:hover .tile__name { color: var(--accent); }
+  .tile--feature .tile__name {
+    font-size: clamp(2.5rem, 5.5vw, 4rem);
+    font-variation-settings: 'opsz' 96, 'wdth' 100;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.04em;
+  }
+  .tile--feature:hover .tile__name { color: var(--text); }
+  .tile__desc {
+    font-size: 0.9rem;
+    color: var(--text-mute);
+    line-height: 1.55;
+  }
+  .tile--feature .tile__desc {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 42rem;
+    color: var(--text-soft);
+  }
+
+  .tile__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .tile__stack {
     font-family: var(--mono);
     font-size: 0.72rem;
-    color: var(--ink-mute);
+    color: var(--text-mute);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    min-width: 0;
+  }
+  .tile__stack .sep { color: var(--text-dim); margin: 0 0.45em; }
+  .tile__arrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-mute);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
     white-space: nowrap;
-    transition: color 200ms ease, transform 200ms ease;
-    justify-self: end;
-    align-self: center;
+    transition: color 200ms ease;
   }
-  .project-row:hover .arrow-link { color: var(--accent); transform: translateX(4px); }
+  .tile__arrow span { transition: transform 200ms ease; }
+  .tile:hover .tile__arrow { color: var(--accent); }
+  .tile:hover .tile__arrow span { transform: translateX(4px); }
 
-  .wip-pill {
+  .tile__wip {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: var(--warn);
     background: var(--warn-soft);
-    border: 1px solid rgba(232, 196, 107, 0.25);
+    border: 1px solid rgba(251, 191, 36, 0.3);
     padding: 0.2rem 0.5rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    border-radius: 4px;
     display: inline-block;
-    margin-left: 0.65rem;
-    vertical-align: middle;
     line-height: 1;
+    font-weight: 500;
   }
 
+  /* ===== FOOTER ===== */
   footer {
-    padding: clamp(2rem, 4vw, 3rem) 0;
+    padding: 1.75rem 0 2.5rem;
     border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 0.75rem;
     font-family: var(--mono);
     font-size: 0.7rem;
-    color: var(--ink-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
   }
   footer a {
-    color: var(--ink-mute);
-    border-bottom: 1px solid transparent;
-    transition: border 200ms ease, color 200ms ease;
+    color: var(--text-mute);
+    transition: color 200ms ease;
   }
-  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  footer a:hover { color: var(--accent); }
 
+  /* ===== ENTRY ANIMATION ===== */
   @media (prefers-reduced-motion: no-preference) {
-    .intro h1, .intro p, .eyebrow,
-    .flagship .label, .flagship h2, .flagship-desc, .flagship-meta, .flagship-stack, .flagship-cta, .flagship-art,
-    .projects-head, .project-row {
-      animation: rise 700ms cubic-bezier(.2,.6,.2,1) both;
+    .hero h1, .tile {
+      animation: rise 700ms cubic-bezier(.2, .6, .2, 1) both;
     }
-    .intro p { animation-delay: 60ms; }
-    .flagship h2 { animation-delay: 60ms; }
-    .flagship-desc { animation-delay: 120ms; }
-    .flagship-meta { animation-delay: 150ms; }
-    .flagship-stack { animation-delay: 180ms; }
-    .flagship-cta { animation-delay: 220ms; }
-    .flagship-art { animation-delay: 100ms; }
-    .project-row:nth-child(1) { animation-delay: 40ms; }
-    .project-row:nth-child(2) { animation-delay: 90ms; }
-    .project-row:nth-child(3) { animation-delay: 140ms; }
-    .project-row:nth-child(4) { animation-delay: 190ms; }
+    .hero h1 { animation-delay: 60ms; }
+    .tile:nth-child(1) { animation-delay: 120ms; }
+    .tile:nth-child(2) { animation-delay: 170ms; }
+    .tile:nth-child(3) { animation-delay: 220ms; }
+    .tile:nth-child(4) { animation-delay: 270ms; }
+    .tile:nth-child(5) { animation-delay: 320ms; }
   }
   @keyframes rise {
     from { opacity: 0; transform: translateY(14px); }
@@ -520,17 +367,27 @@
   .skip:focus {
     left: 1rem;
     z-index: 100;
-    background: var(--bg-rise);
-    color: var(--ink);
+    background: var(--panel);
+    color: var(--text);
     padding: 0.5rem 1rem;
     border: 1px solid var(--accent);
+    border-radius: 6px;
     font-family: var(--mono);
     font-size: 0.75rem;
   }
 
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 720px) {
+    .bento { grid-template-columns: 1fr; gap: 0.7rem; }
+    .tile { min-height: 200px; padding: 1.4rem; }
+    .tile--feature { min-height: 280px; padding: 1.6rem; }
+    .tile__foot { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+  }
   @media (max-width: 480px) {
-    .gh-link .dot.handle-sep { display: none; }
-    .gh-link .count { display: none; }
+    .gh-link .gh-name-text,
+    .gh-link .gh-sep,
+    .gh-link .gh-count { display: none; }
+    .gh-link { padding: 0.3rem; }
   }
 </style>
 </head>
@@ -538,69 +395,29 @@
 
 <a href="#main" class="skip">Saltar para conteúdo</a>
 
-<div class="shell">
+<div class="container">
 
-  <nav class="masthead" aria-label="Cabeçalho">
-    <span class="wordmark">M4RQX<em>— Portefólio</em></span>
+  <nav class="bar" aria-label="Cabeçalho">
+    <a href="/" class="brand">M4RQX</a>
     <a class="gh-link loading" id="gh-link" href="https://github.com/M4RQX" target="_blank" rel="noopener noreferrer" aria-label="Perfil GitHub de M4RQX">
       <img class="avatar" id="gh-avatar" src="https://github.com/M4RQX.png?size=44" width="22" height="22" alt="" />
-      <span class="handle handle-text">M4RQX</span>
-      <span class="dot handle-sep">·</span>
-      <span class="count" id="gh-count">— seguidores</span>
+      <span class="gh-name-text">M4RQX</span>
+      <span class="gh-sep">·</span>
+      <span class="gh-count" id="gh-count">— seguidores</span>
     </a>
   </nav>
 
-  <header class="intro">
-    <div class="eyebrow">Coleção 01 — Em construção</div>
-    <h1>Projetos que <em>construo</em> em código.</h1>
-    <p>Apps web, plataformas de gestão e sites institucionais. Cada um tem um cliente — ou tem-me a mim. Clica em qualquer projeto para abrir o repositório.</p>
-  </header>
-
   <main id="main">
-
-    <section class="flagship" aria-labelledby="featured-title">
-      <div class="flagship-wrap">
-        <div>
-          <div class="label">Projeto em destaque</div>
-          <h2 id="featured-title">Summer <em>Locked</em>.</h2>
-          <p class="flagship-desc">App pessoal de treino, nutrição e progresso. Mobile-first, dark, privada — pensada para dois utilizadores e três meses de disciplina.</p>
-          <div class="flagship-meta loading" id="flagship-meta" data-url="https://github.com/M4RQX/locked-summer">a carregar…</div>
-          <div class="flagship-stack">
-            <span class="chip accent">React</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Tailwind</span>
-            <span class="chip">Neon Postgres</span>
-          </div>
-          <a class="flagship-cta" href="https://github.com/M4RQX/locked-summer" target="_blank" rel="noopener noreferrer">
-            Abrir repositório <span class="arrow">→</span>
-          </a>
-        </div>
-        <div class="flagship-art" aria-hidden="true">
-          <div class="top">
-            <span>SS · 2026</span>
-            <span>v1.0</span>
-          </div>
-          <div>
-            <div class="num">№ 01 / 05</div>
-            <div class="name">Summer<br/>Locked</div>
-          </div>
-        </div>
-      </div>
+    <section class="hero">
+      <h1>Cinco projetos.<br/><span class="acc">Cinco links</span> <span class="arrow">↗</span></h1>
     </section>
 
-    <section class="projects" aria-labelledby="others-title">
-      <div class="projects-head">
-        <h2 id="others-title">Outros <em>projetos</em></h2>
-        <span class="count" id="count"></span>
-      </div>
-      <div class="project-list" id="list"></div>
-    </section>
-
+    <section class="bento" id="bento" aria-label="Projetos"></section>
   </main>
 
   <footer>
-    <span>© MMXXVI — M4RQX</span>
-    <span><a href="https://github.com/M4RQX" target="_blank" rel="noopener noreferrer">github.com/M4RQX</a></span>
+    <span>M4RQX · MMXXVI</span>
+    <a href="https://github.com/M4RQX" target="_blank" rel="noopener noreferrer">github.com/M4RQX ↗</a>
   </footer>
 
 </div>
@@ -608,8 +425,8 @@
 <script>
   // ============================================================
   // Edita aqui para adicionar / remover / alterar projetos.
-  //   featured: true  → vai para o destaque (apenas 1)
-  //   wip: true       → mostra badge "Em curso"
+  //   featured: true  → tile maior, em destaque (1 só)
+  //   wip: true       → mostra pill "Em curso"
   // ============================================================
   const projects = [
     {
@@ -650,36 +467,36 @@
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
 
-  // -------- render lista --------
-  const others = projects.filter((p) => !p.featured);
-
-  document.getElementById('count').textContent =
-    String(others.length).padStart(2, '0') + ' projetos';
-
-  document.getElementById('list').innerHTML = others.map((p) => `
-    <a class="project-row" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${esc(p.name)} no GitHub">
-      <h3>${esc(p.name)}${p.wip ? '<span class="wip-pill">Em curso</span>' : ''}</h3>
-      <div>
-        <p class="desc">${esc(p.description)}</p>
-        ${p.stack && p.stack.length ? `
-          <div class="stack">
-            ${p.stack.map((s) => `<span class="chip">${esc(s)}</span>`).join('')}
-          </div>
-        ` : ''}
-        <div class="repo-meta loading" data-url="${esc(p.url)}">a carregar…</div>
+  // --- Render bento ---
+  document.getElementById('bento').innerHTML = projects.map((p) => `
+    <a class="tile ${p.featured ? 'tile--feature' : ''}" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${esc(p.name)} no GitHub">
+      <div class="tile__head">
+        ${p.featured ? '<span class="tile__tag">Em destaque</span>' : '<span></span>'}
+        <span class="tile__meta loading" data-url="${esc(p.url)}">…</span>
       </div>
-      <span class="arrow-link">Ver código →</span>
+      <div class="tile__body">
+        <h2 class="tile__name">${esc(p.name)}${p.wip ? '<span class="tile__wip">Em curso</span>' : ''}</h2>
+        <p class="tile__desc">${esc(p.description)}</p>
+      </div>
+      <div class="tile__foot">
+        <span class="tile__stack">${
+          p.stack && p.stack.length
+            ? p.stack.map(esc).join('<span class="sep">·</span>')
+            : '<span style="color:var(--text-dim)">—</span>'
+        }</span>
+        <span class="tile__arrow">Abrir <span aria-hidden="true">→</span></span>
+      </div>
     </a>
   `).join('');
 
-  // -------- GitHub meta (cached) --------
+  // --- GitHub API (cached) ---
   const CACHE_TTL = 10 * 60 * 1000;
   async function ghFetch(url) {
     const key = 'gh:' + url;
     try {
-      const cached = sessionStorage.getItem(key);
-      if (cached) {
-        const { ts, data } = JSON.parse(cached);
+      const c = sessionStorage.getItem(key);
+      if (c) {
+        const { ts, data } = JSON.parse(c);
         if (Date.now() - ts < CACHE_TTL) return data;
       }
     } catch {}
@@ -691,17 +508,14 @@
       return data;
     } catch { return null; }
   }
-
   function parseRepo(url) {
     const m = String(url).match(/github\.com\/([^/]+)\/([^/?#]+?)(?:\.git)?(?:\/|$)/);
-    if (!m) return null;
-    return { owner: m[1], repo: m[2] };
+    return m ? { owner: m[1], repo: m[2] } : null;
   }
-
   function timeAgo(iso) {
     if (!iso) return '';
     const d = (Date.now() - new Date(iso).getTime()) / 1000;
-    if (d < 60) return 'agora mesmo';
+    if (d < 60) return 'agora';
     const m = Math.floor(d / 60);
     if (m < 60) return `há ${m} min`;
     const h = Math.floor(m / 60);
@@ -716,48 +530,33 @@
     const years = Math.floor(days / 365);
     return years === 1 ? 'há 1 ano' : `há ${years} anos`;
   }
-
   function formatStars(n) {
     if (n == null) return '';
     if (n < 1000) return n.toString();
     return (n / 1000).toFixed(1) + 'k';
   }
-
   function renderMeta(el, data) {
     if (!data) { el.classList.add('empty'); el.classList.remove('loading'); return; }
     const parts = [];
-    if (data.language) {
-      parts.push(`<span><span class="lang-dot"></span>${esc(data.language)}</span>`);
-    }
-    if (data.stargazers_count != null && data.stargazers_count > 0) {
-      parts.push(`<span>★ ${esc(formatStars(data.stargazers_count))}</span>`);
-    }
-    if (data.pushed_at) {
-      parts.push(`<span>${esc(timeAgo(data.pushed_at))}</span>`);
-    }
-    if (parts.length === 0) {
-      el.classList.add('empty');
-      el.classList.remove('loading');
-      return;
-    }
+    if (data.language) parts.push(`<span><span class="lang-dot"></span>${esc(data.language)}</span>`);
+    if (data.stargazers_count > 0) parts.push(`<span>★ ${esc(formatStars(data.stargazers_count))}</span>`);
+    if (data.pushed_at) parts.push(`<span>${esc(timeAgo(data.pushed_at))}</span>`);
+    if (!parts.length) { el.classList.add('empty'); el.classList.remove('loading'); return; }
     el.innerHTML = parts.join('<span class="sep">·</span>');
     el.classList.remove('loading');
   }
-
   async function loadAll() {
-    // GH profile (top-right)
-    const ghLink = document.getElementById('gh-link');
-    const ghCount = document.getElementById('gh-count');
-    const profile = await ghFetch('https://api.github.com/users/M4RQX');
-    if (profile) {
-      const n = profile.followers ?? 0;
-      ghCount.textContent = `${n} seguidor${n === 1 ? '' : 'es'}`;
+    const link = document.getElementById('gh-link');
+    const count = document.getElementById('gh-count');
+    const prof = await ghFetch('https://api.github.com/users/M4RQX');
+    if (prof) {
+      const n = prof.followers ?? 0;
+      count.textContent = `${n} seguidor${n === 1 ? '' : 'es'}`;
     } else {
-      ghCount.textContent = 'GitHub';
+      count.textContent = 'GitHub';
     }
-    ghLink.classList.remove('loading');
+    link.classList.remove('loading');
 
-    // Each project's repo meta
     const targets = document.querySelectorAll('[data-url]');
     await Promise.all(Array.from(targets).map(async (el) => {
       const info = parseRepo(el.dataset.url);
@@ -766,7 +565,6 @@
       renderMeta(el, data);
     }));
   }
-
   loadAll();
 </script>
 
